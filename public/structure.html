@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>科研导航网站 - 盒子元素结构分布</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Consolas', 'Monaco', monospace;
+            background: #f8fafc;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .structure-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .title {
+            text-align: center;
+            color: #1f2937;
+            margin-bottom: 30px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .layout-box {
+            border: 2px solid #e5e7eb;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 8px;
+            position: relative;
+            background: white;
+        }
+        
+        .layout-label {
+            position: absolute;
+            top: -12px;
+            left: 15px;
+            background: white;
+            padding: 0 8px;
+            font-size: 12px;
+            font-weight: bold;
+            color: #374151;
+        }
+        
+        /* 不同层级的颜色 */
+        .level-1 { border-color: #ef4444; background: #fef2f2; }
+        .level-1 .layout-label { color: #dc2626; }
+        
+        .level-2 { border-color: #3b82f6; background: #eff6ff; }
+        .level-2 .layout-label { color: #2563eb; }
+        
+        .level-3 { border-color: #10b981; background: #f0fdf4; }
+        .level-3 .layout-label { color: #059669; }
+        
+        .level-4 { border-color: #f59e0b; background: #fffbeb; }
+        .level-4 .layout-label { color: #d97706; }
+        
+        .level-5 { border-color: #8b5cf6; background: #faf5ff; }
+        .level-5 .layout-label { color: #7c3aed; }
+        
+        .component-grid {
+            display: grid;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .nav-grid {
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        }
+        
+        .tools-grid {
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        }
+        
+        .code-text {
+            font-family: 'Courier New', monospace;
+            font-size: 11px;
+            color: #6b7280;
+            margin: 5px 0;
+        }
+        
+        .flex-container {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin: 5px 0;
+        }
+        
+        .fixed-element {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            border: 2px dashed #8b5cf6;
+            padding: 10px;
+            background: #faf5ff;
+            border-radius: 6px;
+            font-size: 11px;
+            color: #7c3aed;
+            z-index: 10;
+        }
+        
+        .legend {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f9fafb;
+            border-radius: 8px;
+        }
+        
+        .legend-title {
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #1f2937;
+        }
+        
+        .legend-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+        }
+        
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 3px;
+            border: 2px solid;
+        }
+    </style>
+</head>
+<body>
+    <div class="structure-container">
+        <h1 class="title">🏗️ 科研导航网站 - 盒子元素结构分布</h1>
+        
+        <!-- 固定定位元素 -->
+        <div class="fixed-element">
+            <strong>Fixed Position</strong><br>
+            TimeLocationWidget<br>
+            (右上角时间地点)
+        </div>
+        
+        <!-- 最外层容器 -->
+        <div class="layout-box level-1">
+            <div class="layout-label">#app (根容器)</div>
+            <div class="code-text">position: relative; min-height: 100vh;</div>
+            
+            <!-- 背景层 -->
+            <div class="layout-box level-2">
+                <div class="layout-label">.background (背景层)</div>
+                <div class="code-text">position: fixed; z-index: -1; 背景图片+遮罩层</div>
+            </div>
+            
+            <!-- 主容器 -->
+            <div class="layout-box level-2">
+                <div class="layout-label">.container (主容器)</div>
+                <div class="code-text">max-width: 1200px; margin: 0 auto; padding: 20px;</div>
+                
+                <!-- 头部区域 -->
+                <div class="layout-box level-3">
+                    <div class="layout-label">.header (头部标题)</div>
+                    <div class="code-text">text-align: center; margin-bottom: 40px;</div>
+                    <div style="text-align: center; padding: 10px; background: #f8fafc; border-radius: 4px;">
+                        <strong>科研导航平台</strong><br>
+                        <small>Research Navigation Platform</small>
+                    </div>
+                </div>
+                
+                <!-- 导航区域 -->
+                <div class="layout-box level-3">
+                    <div class="layout-label">NavigationHeader (顶部导航)</div>
+                    <div class="code-text">margin-bottom: 25px;</div>
+                    
+                    <div class="layout-box level-4">
+                        <div class="layout-label">.nav-items (导航容器)</div>
+                        <div class="code-text">display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;</div>
+                        
+                        <div class="component-grid nav-grid">
+                            <div class="layout-box level-5">
+                                <div class="layout-label">.nav-item</div>
+                                <div class="code-text">必应搜索 🔍</div>
+                            </div>
+                            <div class="layout-box level-5">
+                                <div class="layout-label">.nav-item</div>
+                                <div class="code-text">谷歌学术 🎓</div>
+                            </div>
+                            <div class="layout-box level-5">
+                                <div class="layout-label">.nav-item</div>
+                                <div class="code-text">万方学术 📚</div>
+                            </div>
+                            <div class="layout-box level-5">
+                                <div class="layout-label">.nav-item</div>
+                                <div class="code-text">... 更多导航</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 搜索区域 -->
+                <div class="layout-box level-3">
+                    <div class="layout-label">SearchBox (搜索框)</div>
+                    <div class="code-text">margin-bottom: 30px;</div>
+                    
+                    <div class="layout-box level-4">
+                        <div class="layout-label">.search-container</div>
+                        <div class="code-text">display: flex; justify-content: center;</div>
+                        
+                        <div class="layout-box level-5">
+                            <div class="layout-label">.search-box</div>
+                            <div class="code-text">max-width: 550px; display: flex; border-radius: 12px;</div>
+                            
+                            <div class="flex-container">
+                                <div style="flex: 1; padding: 8px; background: #f3f4f6; border-radius: 4px; font-size: 11px;">
+                                    .search-input (输入框)
+                                </div>
+                                <div style="padding: 8px; background: #374151; color: white; border-radius: 4px; font-size: 11px;">
+                                    .search-button (搜索按钮)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 内容区域 -->
+                <div class="layout-box level-3">
+                    <div class="layout-label">.content (内容容器)</div>
+                    <div class="code-text">display: flex; flex-direction: column; gap: 30px;</div>
+                    
+                    <!-- 分类区域1 -->
+                    <div class="layout-box level-4">
+                        <div class="layout-label">CategorySection (常用网页)</div>
+                        <div class="code-text">background: rgba(255,255,255,0.65); border-radius: 16px; padding: 24px;</div>
+                        
+                        <div class="layout-box level-5">
+                            <div class="layout-label">.category-header</div>
+                            <div class="code-text">display: flex; align-items: center; gap: 12px;</div>
+                            <div class="flex-container">
+                                <div style="width: 30px; height: 30px; background: #f8fafc; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 14px;">🌐</div>
+                                <div style="font-weight: bold; font-size: 14px;">常用网页</div>
+                            </div>
+                        </div>
+                        
+                        <div class="layout-box level-5">
+                            <div class="layout-label">.tools-grid</div>
+                            <div class="code-text">display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px;</div>
+                            
+                            <div class="component-grid tools-grid">
+                                <div class="layout-box" style="border-color: #d1d5db; min-height: 80px;">
+                                    <div style="text-align: center; padding: 5px;">
+                                        <div style="width: 24px; height: 24px; background: white; border-radius: 4px; margin: 0 auto 5px; display: flex; align-items: center; justify-content: center; font-size: 12px;">💬</div>
+                                        <div style="font-size: 10px; font-weight: bold;">DeepSeek</div>
+                                    </div>
+                                </div>
+                                <div class="layout-box" style="border-color: #d1d5db; min-height: 80px;">
+                                    <div style="text-align: center; padding: 5px;">
+                                        <div style="width: 24px; height: 24px; background: white; border-radius: 4px; margin: 0 auto 5px; display: flex; align-items: center; justify-content: center; font-size: 12px;">📝</div>
+                                        <div style="font-size: 10px; font-weight: bold;">论文AI</div>
+                                    </div>
+                                </div>
+                                <div class="layout-box" style="border-color: #d1d5db; min-height: 80px;">
+                                    <div style="text-align: center; padding: 5px;">
+                                        <div style="width: 24px; height: 24px; background: white; border-radius: 4px; margin: 0 auto 5px; display: flex; align-items: center; justify-content: center; font-size: 12px;">📋</div>
+                                        <div style="font-size: 10px; font-weight: bold;">专业版</div>
+                                    </div>
+                                </div>
+                                <div class="layout-box" style="border-color: #d1d5db; min-height: 80px;">
+                                    <div style="text-align: center; padding: 5px; color: #9ca3af;">
+                                        ... 更多工具
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 分类区域2 -->
+                    <div class="layout-box level-4">
+                        <div class="layout-label">CategorySection (学术AI)</div>
+                        <div class="code-text">同上结构，包含不同的工具卡片</div>
+                        <div style="text-align: center; padding: 20px; color: #6b7280; background: #f9fafb; border-radius: 4px;">
+                            🎓 学术AI 分类<br>
+                            <small>包含: AI论文一键生成、免费AI写作、PaperFake AI写论文 等工具</small>
+                        </div>
+                    </div>
+                    
+                    <!-- 分类区域3 -->
+                    <div class="layout-box level-4">
+                        <div class="layout-label">CategorySection (满血DeepSeek)</div>
+                        <div class="code-text">同上结构，包含不同的工具卡片</div>
+                        <div style="text-align: center; padding: 20px; color: #6b7280; background: #f9fafb; border-radius: 4px;">
+                            🔥 满血DeepSeek 分类<br>
+                            <small>包含: 回小白、讯飞星火AI、学术版DeepSeek 等工具</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 图例说明 -->
+        <div class="legend">
+            <div class="legend-title">📋 结构层级说明</div>
+            <div class="legend-grid">
+                <div class="legend-item">
+                    <div class="legend-color level-1" style="border-color: #ef4444; background: #fef2f2;"></div>
+                    <span><strong>Level 1:</strong> 根容器 (#app)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color level-2" style="border-color: #3b82f6; background: #eff6ff;"></div>
+                    <span><strong>Level 2:</strong> 主要区域 (.container, .background)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color level-3" style="border-color: #10b981; background: #f0fdf4;"></div>
+                    <span><strong>Level 3:</strong> 功能组件 (Header, Navigation, Search, Content)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color level-4" style="border-color: #f59e0b; background: #fffbeb;"></div>
+                    <span><strong>Level 4:</strong> 分类容器 (CategorySection)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color level-5" style="border-color: #8b5cf6; background: #faf5ff;"></div>
+                    <span><strong>Level 5:</strong> 具体元素 (ToolCard, nav-item)</span>
+                </div>
+                <div class="legend-item">
+                    <div style="width: 20px; height: 20px; border: 2px dashed #8b5cf6; background: #faf5ff; border-radius: 3px;"></div>
+                    <span><strong>Fixed:</strong> 固定定位元素 (TimeLocationWidget)</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 关键CSS属性说明 -->
+        <div class="legend" style="margin-top: 20px;">
+            <div class="legend-title">🎨 关键CSS布局属性</div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; font-size: 12px;">
+                <div>
+                    <strong>.container:</strong><br>
+                    • max-width: 1200px<br>
+                    • margin: 0 auto<br>
+                    • padding: 20px
+                </div>
+                <div>
+                    <strong>.nav-items:</strong><br>
+                    • display: flex<br>
+                    • flex-wrap: wrap<br>
+                    • justify-content: center
+                </div>
+                <div>
+                    <strong>.tools-grid:</strong><br>
+                    • display: grid<br>
+                    • grid-template-columns: repeat(auto-fill, minmax(130px, 1fr))<br>
+                    • gap: 12px
+                </div>
+                <div>
+                    <strong>.background:</strong><br>
+                    • position: fixed<br>
+                    • z-index: -1<br>
+                    • background-image + 遮罩
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
