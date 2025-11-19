@@ -28,3 +28,9 @@ coverage
 *.sw?
 
 *.tsbuildinfo
+.history/
+node_modules/
+.vscode/
+.wrangler/
+dist/
+navigationData copy.js

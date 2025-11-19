@@ -41,7 +41,7 @@ export const navigationData = [
         name: 'lobechat',
         icon: 'https://www.lobechat.com/favicon.ico',
         color: '#1f2937',
-        url: 'http://117.72.75.113:3210',
+        url: '',
         description: '团队自用'
       },
       {
@@ -49,7 +49,7 @@ export const navigationData = [
         name: '1Panel管理面板',
         icon: 'https://assets.streamlinehq.com/image/private/w_300,h_300,ar_1/f_auto/v1/icons/logos/1panel-ezh0i0nmrbrw58wuhfvam9.png/1panel-2odjec9y430kxozr1tlqad.png?_a=DATAg1AAZAA0',
         color: '#059669',
-        url: 'http://117.72.75.113:12184/ef9942bd16',
+        url: '',
         description: '团队自用'
       },
       {
@@ -471,7 +471,7 @@ export const navigationData = [
         name: 'lobechat',
         icon: 'https://www.lobechat.com/favicon.ico',
         color: '#1f2937',
-        url: 'http://117.72.14.115:3210/chat',
+        url: '',
         description: '个人自用'
       },
       {
@@ -479,7 +479,7 @@ export const navigationData = [
         name: '1Panel管理面板',
         icon: 'https://assets.streamlinehq.com/image/private/w_300,h_300,ar_1/f_auto/v1/icons/logos/1panel-ezh0i0nmrbrw58wuhfvam9.png/1panel-2odjec9y430kxozr1tlqad.png?_a=DATAg1AAZAA0',
         color: '#059669',
-        url: 'http://117.72.14.115:32266/a26153af40',
+        url: '',
         description: '个人自用'
       },
       {
@@ -487,7 +487,7 @@ export const navigationData = [
         name: 'Casdoor',
         icon: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMg92sdk_ckw3bG3NWv2de_ZPnrcz6YBRWrA&s',
         color: '#1f2937',
-        url: 'http://117.72.75.113:8000',
+        url: '',
         description: '团队成员使用管理'
       },
       {
